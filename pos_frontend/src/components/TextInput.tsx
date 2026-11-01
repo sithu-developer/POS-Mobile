@@ -1,4 +1,5 @@
 import { Fonts } from "@/constants/theme";
+import { useTheme } from "@/hooks/use-theme";
 import { StyleSheet, TextInput , type TextInputProps } from "react-native"
 
 interface Props extends TextInputProps {
@@ -6,8 +7,10 @@ interface Props extends TextInputProps {
 }
 
 const TextField = ({ style , ...otherProps } : Props) => {
+  const theme = useTheme();
+
     return (
-        <TextInput style={ [ styles.input , style ] } {...otherProps} />
+        <TextInput style={ [ styles.input , style , { borderColor : theme.text , color : theme.text} ] } {...otherProps} />
     )
 }
 
@@ -19,8 +22,7 @@ const styles = StyleSheet.create({
     height : "40px",
     padding : 10,
     borderWidth : 1,
-    borderColor : "black",
-    borderRadius : 1,
-    fontFamily : Fonts.mono
+    borderRadius : 7,
+    fontFamily : Fonts.mono,
   }
 });
