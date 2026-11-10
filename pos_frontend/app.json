@@ -21,6 +21,7 @@
       "package": "com.anonymous.pos_frontend"
     },
     "web": {
+      "bundler": "metro",
       "output": "server",
       "favicon": "./assets/images/app_icon.png"
     },

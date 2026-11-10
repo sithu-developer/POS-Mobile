@@ -6,154 +6,58 @@ import { LockKeyhole } from 'lucide-react-native';
 import { Eye } from 'lucide-react-native';
 import { EyeClosed } from 'lucide-react-native';
 import { useState } from 'react';
-import { themes } from '@/util/theme';
-
+import { ChefHat } from 'lucide-react-native';
+import { Utensils } from 'lucide-react-native';
+ 
 
 export default function HomeScreen() {
   const [ showPassword , setShowPassword ] = useState<boolean>(false);
   
   return (
-    <SafeAreaView style={[styles.safeAreaContainer ]} >
-      <View style={[ styles.container  ]} >
-        <Text style={[ styles.text ]} >Welcome Back!</Text>
-        <View style={[ styles.inputContainer ]} >
-          <Mail  />
-          <TextInput  placeholder='email' autoCapitalize='none'  style={[ styles.innerTextInput ]} />
+    <SafeAreaView className='flex-1 justify-center items-center gap-4' >
+      <View className='items-center w-screen gap-4' >
+        <View className='relative flex-row items-baseline justify-center gap-2'>
+          <ChefHat className='text-primary absolute -top-5 left-0 size-6' />
+          <Text className="text-3xl font-bold text-primary font-inn" >Welcome Back</Text>
+          <Utensils className='text-primary size-5 rotate-[23deg]' />
         </View>
-        <View style={[ styles.inputContainer ]} >
-          <LockKeyhole  />
-          <TextInput placeholder='password' secureTextEntry={!showPassword} style={[ styles.innerTextInput ]} />
+        <View className='flex-row items-center gap-2 w-[80%] p-3 border-[1px] rounded-xl border-gray-400 text-primary bg-green-50' >
+          <Mail className='size-5' />
+          <TextInput  placeholder='email' autoCapitalize='none' className='flex-1 p-1 outline-none' />
+        </View>
+        <View className='flex-row items-center gap-2 w-[80%] p-3 border-[1px] rounded-xl border-gray-400 text-primary bg-green-50' >
+          <LockKeyhole className='size-5' />
+          <TextInput placeholder='password' secureTextEntry={!showPassword} className='flex-1 p-1 outline-none' />
           <Pressable onPress={() => setShowPassword(prev => !prev)} >
-            {showPassword ? <EyeClosed size={20}  /> : <Eye size={20} /> }
+            {showPassword ? <EyeClosed className='size-5' /> : <Eye className='size-5' /> }
           </Pressable>
         </View>
-        <View style={[ { backgroundColor : "blue" , height : 5}]} >
-          {/* <Checkbox /> */}
-        </View>
-        <Pressable style={[ styles.button , styles.logInButton ]} >
-          <Text  style={[ styles.buttonText ]} >Log In</Text>
-          <ArrowRight size={16} />
+        <Pressable className='bg-primary text-white flex-row items-center justify-center gap-3 w-[80%] p-3 rounded-3xl select-none' >
+          <Text className='text-white font-semibold' >Log In</Text>
+          <ArrowRight className='size-4 font-semibold' />
         </Pressable>
       </View>
-      <View style={[ styles.dividerContainer ]} >
-        <View style={[ styles.dividerLine ]}  />
-        <Text style={[ styles.dividerText ]}>OR</Text>
-        <View style={[ styles.dividerLine ]}  />
+      <View className='flex-row items-center gap-3 w-[80%]' >
+        <View className='flex-1 border border-gray-300'  />
+        <Text className='font-semibold text-gray-500' >OR</Text>
+        <View className='flex-1 border border-gray-300' />
       </View>
-      <Pressable style={({pressed}) => [ styles.button , styles.continueButton ]} >
+      <Pressable className='border-gray-400 flex-row items-center justify-center gap-3 w-[80%] border rounded-3xl p-3 select-none' >
         <Image alt='google icon' source={require("@/assets/images/google_icon.svg")} style={[ styles.image ]} />
-        <Text style={[ styles.continueGoogleText ]} >Continue with google</Text>
+        <Text className='text-xs font-semibold text-gray-700' >Continue with Google</Text>
       </Pressable>
-      <View style={[ styles.signUpContainer ]} >
-        <Text style={[ styles.lightText ]} >Don't have an account?</Text>
-        <Text style={[ styles.linkText ]} >Sign Up</Text>
+      <View className='flex-row gap-2 items-center' >
+        <Text className='text-xs text-gray-500' >Don't have an account?</Text>
+        <Text className='text-xs text-primary underline underline-offset-1 font-semibold'>Sign Up</Text>
       </View>
     </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
-  safeAreaContainer : {
-    display : "flex",
-    alignItems : "center",
-    justifyContent : "center",
-    flex : 1,
-    padding : 10,
-    gap : 15
-  },
-  container : {
-    display : "flex",
-    alignItems : "center",
-    gap : 20,
-    width : "100%",
-  },
-  text : {
-    fontSize : 24
-  },
-  inputContainer : {
-    flexDirection : "row",
-    alignItems : "center",
-    gap : 10,
-    borderColor : "#060606",
-    borderStyle : "solid",
-    borderWidth : 1,
-    borderRadius : 10,
-    padding : 10,
-    width : "80%",
-    color : themes.light.primary
-  },
-  innerTextInput : {
-    flex : 1,
-    padding : 5,
-    borderWidth : 0,
-    outlineWidth : 0,
-  },
-  dividerContainer : {
-    display : "flex",
-    flexDirection : "row",
-    alignItems : "center",
-    gap : 10,
-    width : '80%'
-  },
-  dividerLine : {
-    borderWidth : 0.5,
-    borderStyle : "solid",
-    borderColor : "#4b4b4b7d",
-    flex : 1,
-    height : 1
-  },
-  dividerText : {
-    fontWeight : "500",
-    color : "rgba(65, 67, 70, 0.65)"
-  },
-  logInButton : {
-    backgroundColor : themes.light.primary,
-    color : "#fff"
-  },
-  continueButton : {
-    borderWidth : 1,
-    borderStyle : "solid",
-    borderColor : "#4b4b4b7d"
-  },
-  button : {
-    padding : 10,
-    width : "80%",
-    borderRadius : 30,
-    display : "flex",
-    flexDirection : "row",
-    justifyContent : 'center',
-    alignItems : "flex-end",
-    gap : 10,
-  },
-  buttonText : {
-    color : "#fff",
-    fontWeight : "600",
-  },
-  continueGoogleText : {
-    fontSize : 13,
-    fontWeight : "400"
-  },
   image : {
     width : 16,
     height : 16,
     resizeMode : "stretch"
   },
-  signUpContainer : {
-    display : "flex",
-    flexDirection : "row",
-    alignItems : "center",
-    gap : 5
-  },
-  lightText : {
-    color : "#7a818d",
-    fontSize : 13
-  },
-  linkText : {
-    textDecorationLine : "underline",
-    textDecorationColor : themes.light.primary,
-    color : themes.light.primary,
-    cursor : "pointer",
-    fontWeight : "500",
-    fontSize : 13
-  }
 });
