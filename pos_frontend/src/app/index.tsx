@@ -6,6 +6,7 @@ import { LockKeyhole } from 'lucide-react-native';
 import { Eye } from 'lucide-react-native';
 import { EyeClosed } from 'lucide-react-native';
 import { useState } from 'react';
+import { themes } from '@/util/theme';
 
 
 export default function HomeScreen() {
@@ -25,6 +26,9 @@ export default function HomeScreen() {
           <Pressable onPress={() => setShowPassword(prev => !prev)} >
             {showPassword ? <EyeClosed size={20}  /> : <Eye size={20} /> }
           </Pressable>
+        </View>
+        <View style={[ { backgroundColor : "blue" , height : 5}]} >
+          {/* <Checkbox /> */}
         </View>
         <Pressable style={[ styles.button , styles.logInButton ]} >
           <Text  style={[ styles.buttonText ]} >Log In</Text>
@@ -60,7 +64,7 @@ const styles = StyleSheet.create({
   container : {
     display : "flex",
     alignItems : "center",
-    gap : "30px",
+    gap : 20,
     width : "100%",
   },
   text : {
@@ -73,9 +77,10 @@ const styles = StyleSheet.create({
     borderColor : "#060606",
     borderStyle : "solid",
     borderWidth : 1,
-    borderRadius : 5,
+    borderRadius : 10,
     padding : 10,
-    width : "80%"
+    width : "80%",
+    color : themes.light.primary
   },
   innerTextInput : {
     flex : 1,
@@ -102,7 +107,7 @@ const styles = StyleSheet.create({
     color : "rgba(65, 67, 70, 0.65)"
   },
   logInButton : {
-    backgroundColor : "#2e2727",
+    backgroundColor : themes.light.primary,
     color : "#fff"
   },
   continueButton : {
@@ -145,8 +150,8 @@ const styles = StyleSheet.create({
   },
   linkText : {
     textDecorationLine : "underline",
-    textDecorationColor : "#258055",
-    color : "#258055",
+    textDecorationColor : themes.light.primary,
+    color : themes.light.primary,
     cursor : "pointer",
     fontWeight : "500",
     fontSize : 13
