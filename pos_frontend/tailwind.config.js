@@ -9,7 +9,11 @@ module.exports = {
         primary : "#025321"
       },
       fontFamily : {
-        
+        comfortaa: ['Comfortaa', 'cursive'],
+        caveat: ['Caveat', 'cursive'],
+        architect: ["Architects Daughter", 'cursive'],
+        gaegu: ['Gaegu', 'cursive'],
+        cursive : ['cursive']
       }
     },
   },
